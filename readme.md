@@ -87,13 +87,13 @@ Verkefni sett fyrir í fyrirlestri fimmtudaginn 14. janúar 2021.
 
 ## Skil
 
-Skila skal í Canvas í seinasta lagi fyrir lok dags fimmtudaginn 28. janúar 2021.
+Skila skal í Canvas í seinasta lagi fyrir lok dags miðvikudaginn 3. febrúar 2021.
 
 Skilaboð skulu innihalda slóð á GitHub repo fyrir verkefni, og dæmatímakennurum skal hafa verið boðið í repo ([sjá leiðbeiningar](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository)). Notendanöfn þeirra eru:
 
 TBD
 
-Hver dagur eftir skil dregur verkefni niður um 10%, allt að 20% ef skilað laugardaginn 30. janúar 2020 en þá lokar fyrir skil.
+Hver dagur eftir skil dregur verkefni niður um 10%, allt að 20% ef skilað laugardaginn 6. febrúar 2020 en þá lokar fyrir skil.
 
 ## Einkunn
 
