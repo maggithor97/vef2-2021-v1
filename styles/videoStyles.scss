@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    transition: 0.2s ease-in-out;
+}
+
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 16px;
+}
+
+.header__h1 {
+    margin: 0px;
+    width: min-content;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.video {
+    display: flex;
+    justify-content: center;
+}
+
+.video__elements {
+    width: 90vw;
+}
+
+.video__player {
+    width: 90vw;
+}
+
+.video__description {
+    margin-bottom: 16px;
+}
+
+@media (min-width: 501px) {
+    .video__elements {
+        width: 60vw;
+    }
+
+    .video__player {
+        width: 60vw;
+    }
+}

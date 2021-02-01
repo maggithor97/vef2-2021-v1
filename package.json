@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "[Kynning í fyrirlestri](https://youtu.be/pCEHnurbuCU).",
   "main": ".eslintrc.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "sass --watch styles.scss:styles.css",
+    "lint-css": "stylelint styles.css",
+    "lint-scss": "stylelint ./styles/styles.scss --syntax scss"
   },
   "repository": {
     "type": "git",
@@ -17,6 +21,13 @@
   },
   "homepage": "https://github.com/vefforritun/vef2-2021-v1#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "file-system": "^2.2.2",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "stylelint": "^13.9.0",
+    "stylelint-config-standard": "^20.0.0"
   }
 }

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="grid" lang="is">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <link rel="stylesheet" href="grid.css"> -->
+  <link href="../../styles.css" rel="stylesheet">
+  
+  <title>Fræðslumyndbandaleigan</title>
+</head>
+
+<header class="header" id="header">
+  <h1 class="header__h1">Fræðslumyndbandaleigan 
+  </h1>
+</header>
+
+<main class="videos">
+
+
+
+  <h2 class="videos__title">Nýleg Myndbönd</h2>
+  <% let nyleg = categories[0].videos %>
+  <% for(let i = 0; i < nyleg.length; i = i+3) { %>
+  <div class="videos__row">
+    <% for(let j = i; j < Math.min(i+3,nyleg.length); j++) { %>
+      <% let vid = videos[nyleg[j]-1] %>
+      <div class="videos__col">
+        <a class="video" href="/<%-vid.id %>">
+          <div class="video">
+            <div class="video__image">
+              <img class="video__img" src=<%= vid.poster %> alt="">
+              <div class="video__duration"><b>
+                <%= secondsToHms(vid.duration)%>
+              </b></div>
+            </div>
+            <div class="video__content">
+              <h3 class="video__title"><%= vid.title%></h3>
+              <p class="video__age"> 
+                <%= dateDiff(vid.created)%>
+                
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+    <% } %>
+
+
+  <hr class="line">
+  <h2 class="videos__title">Kennslu Myndbönd</h2>
+  <% let kennslu = categories[1].videos %>
+  <% for(let i = 0; i < kennslu.length; i = i+3) { %>
+    
+  <div class="videos__row">
+    <% for(let j = i; j < Math.min(i+3,kennslu.length); j++) { %>
+      
+      <% let vid = videos[kennslu[j]-1] %>
+      <div class="videos__col">
+        <a class="video" href="/<%-vid.id %>">
+          <div class="video">
+            <div class="video__image">
+              <img class="video__img" src=<%= vid.poster %> alt="">
+              <div class="video__duration"><b>
+                <%= secondsToHms(vid.duration)%>
+              </b></div>
+            </div>
+            <div class="video__content">
+              <h3 class="video__title"><%= vid.title%></h3>
+              <p class="video__age"> 
+                <%= dateDiff(vid.created)%>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+    <% } %>
+
+  
+
+  <hr class="line">
+  <h2 class="videos__title">Skemmtimyndbönd</h2>
+  <% let skemmti = categories[2].videos %>
+  <% for(let i = 0; i < skemmti.length; i = i+3) { %>
+  <div class="videos__row">
+    <% for(let j = i; j < Math.min(i+3,skemmti.length); j++) { %>
+      
+      <% let vid = videos[skemmti[j]-1] %>
+      <div class="videos__col">
+        <a class="video" href="/<%-vid.id %>">
+          <div class="video">
+            <div class="video__image">
+              <img class="video__img" src=<%= vid.poster %> alt="">
+              <div class="video__duration"><b>
+                <%= secondsToHms(vid.duration)%>
+              </b></div>
+            </div>
+            <div class="video__content">
+              <h3 class="video__title"><%= vid.title%></h3>
+              <p class="video__age"> 
+                <%= dateDiff(vid.created)%>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+    <% } %>
+
+</main>
+<script></script>
+
+
+</html>

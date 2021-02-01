@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="grid" lang="is">
+
+<head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="grid.css"> -->
+    <link href="videoStyles.css" rel="stylesheet">
+    <title>Fræðslumyndbandaleigan</title>
+</head>
+
+<header class="header">
+    <h1 class="header__h1"><%=video.title%></h1>
+</header>
+
+<main class="video">
+    <div class="video__elements">
+        <video controls class="video__player" width="100%" height="100%"
+            src= "<%=video.video %>"
+            type='video/mp4' >
+        </video>
+        
+        <p class="video__description">Kanína að leika sér</p>
+        <a class="back__button" href="/">
+            <h4>Til baka</h4>
+        </a>
+    </div>
+
+</main>
+<script>
+
+</script>
+
+</html>
