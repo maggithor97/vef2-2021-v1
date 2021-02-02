@@ -5,9 +5,8 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(express.static('styles'));
-//app.use(express.static('src'));
 
-// Get data
+// Get database
 const data = fs.readFileSync('./videos.json');
 const videos = JSON.parse(data).videos;
 const categories = JSON.parse(data).categories;
@@ -28,12 +27,31 @@ app.locals.secondsToHms = (d) => {
     return hDisplay + mDisplay + sDisplay;
 }
 
-app.locals.dateDiff = (time) => {
-  var today = new Date();
-  var date = new Date(time);
-  var dateDiff = today - date;
-  return Math.round(dateDiff/86400000) + " daga gamalt";
+
+app.locals.getTimeSince = (timeThen) => {
+  var xUnits;
+  var TimeUnit;
+  var i=0;
+  const diff = Math.floor(Math.abs((Date.now()-timeThen))/1000);
+  const day = 3600*24;
+  const times = [day/24,day,day*7,day*30,day*365];
+  const strings = [["klukkustund","klukkustundum"],
+                  ["degi","dögum"],
+                  ["viku","vikum"],
+                  ["mánuði","mánuðum"],
+                  ["ári","árum"]];
+  for (i=1 ;i < times.length ;i++) {
+      if (diff < times[i])
+          break;
+  }
+  xUnits = Math.floor(diff/times[i-1]);
+  if (xUnits <= 1) { 
+      TimeUnit = strings[i=0? i : i-1][0];
+      xUnit = 1;} // 0 hours change to 1 hour
+  else TimeUnit = strings[i=0? i : i-1][1];
+  return "Fyrir " + xUnits + " " +  TimeUnit +  " síðan";
 }
+
 
 
 app.get('/', (req, res) => {
