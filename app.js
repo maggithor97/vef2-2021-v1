@@ -1,3 +1,4 @@
+/*  eslint linebreak-style: ["error", "windows"] */
 import fs from 'fs';
 import express from 'express';
 
@@ -8,76 +9,63 @@ app.use(express.static('styles'));
 
 // Get database
 const data = fs.readFileSync('./videos.json');
-const videos = JSON.parse(data).videos;
-const categories = JSON.parse(data).categories;
-
+const { videos } = JSON.parse(data);
+const { categories } = JSON.parse(data);
 
 app.set('view engine', 'ejs');
 
+app.locals.secondsToHms = (second) => {
+  const sec = Number(second);
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor(sec % 3600 / 60);
+  const s = Math.floor(sec % 3600 % 60);
 
-app.locals.secondsToHms = (d) => {
-  d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
+  const hDisplay = h > 0 ? `${h}:` : '';
+  const mDisplay = m > 10 ? `${m}:` : `0${m}:`;
+  const sDisplay = s > 10 ? s : `0${s}`;
+  return hDisplay + mDisplay + sDisplay;
+};
 
-    var hDisplay = h > 0 ? h + ":" : "";
-    var mDisplay = m > 10 ? m + ":" : "0" + m +":";
-    var sDisplay = s > 10 ? s : "0"+s;
-    return hDisplay + mDisplay + sDisplay;
-}
-
-
-app.locals.getTimeSince = (timeThen) => {
-  var xUnits;
-  var TimeUnit;
-  var i=0;
-  const diff = Math.floor(Math.abs((Date.now()-timeThen))/1000);
-  const day = 3600*24;
-  const times = [day/24,day,day*7,day*30,day*365];
-  const strings = [["klukkustund","klukkustundum"],
-                  ["degi","dögum"],
-                  ["viku","vikum"],
-                  ["mánuði","mánuðum"],
-                  ["ári","árum"]];
-  for (i=1 ;i < times.length ;i++) {
-      if (diff < times[i])
-          break;
+app.locals.timeSince = (timeThen) => {
+  const x = Math.abs((Date.now() - timeThen)) / 1000;
+  const diff = Math.floor(x);
+  const day = 3600 * 24;
+  const times = [day / 24, day, day * 7, day * 30, day * 365];
+  const strings = [['klukkustund', 'klukkustundum'],
+    ['degi', 'dögum'],
+    ['viku', 'vikum'],
+    ['mánuði', 'mánuðum'],
+    ['ári', 'árum']];
+  let dayMonthYear;
+  let i;
+  for (i = 1; i < times.length; i += 1) {
+    if (diff < times[i]) break;
   }
-  xUnits = Math.floor(diff/times[i-1]);
-  if (xUnits <= 1) { 
-      TimeUnit = strings[i=0? i : i-1][0];
-      xUnit = 1;} // 0 hours change to 1 hour
-  else TimeUnit = strings[i=0? i : i-1][1];
-  return "Fyrir " + xUnits + " " +  TimeUnit +  " síðan";
-}
-
-
+  let number = Math.floor(diff / times[i - 1]);
+  if (number <= 1) {
+    dayMonthYear = strings[i === 0 ? i : i - 1][0];
+    number = 1;
+  } else dayMonthYear = strings[i === 0 ? i : i - 1][1];
+  return 'Fyrir' + number + ' ' + dayMonthYear + 'síðan';
+};
 
 app.get('/', (req, res) => {
-  res.render('index', 
-  {
-    videos: videos,
-    categories: categories
-  });
-
+  res.render('index',
+    {
+      videos,
+      categories,
+    });
 });
 
-
 app.get('/:id', (req, res) => {
-  let videoId = req.params.id
-  for(let i = 0; i < videos.length; i++) {
-    if ( videos[i].id == videoId ){
-      res.render('video', {video: videos[i]});
+  const videoId = req.params.id;
+  for (let i = 0; i < videos.length; i = i + 1) {
+    if (videos[i].id === videoId) {
+      res.render('video', { video: videos[i] });
     }
   }
 
-  res.status(404).send('Síða ekki til');
+  res.status(404).send('<h1>Síða ekki til</h1>');
 });
 
-
-
-
 app.listen(4000, () => console.log('Example app listening on port 4000!'));
-
-

@@ -3,44 +3,41 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- <link rel="stylesheet" href="grid.css"> -->
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <link href="../../styles.css" rel="stylesheet">
 
   <title>Fræðslumyndbandaleigan</title>
 </head>
 
 <header class="header" id="header">
-  <h1 class="header__h1">Fræðslumyndbandaleigan
+  <h1 class="header_h1">Fræðslumyndbandaleigan
   </h1>
 </header>
 
 <main class="videos">
 
-
-
-  <h2 class="videos__title">Nýleg Myndbönd</h2>
+  <h2 class="videos_title">Nýleg Myndbönd</h2>
   <% let nyleg=categories[0].videos %>
 
-
-  <div class="videos__row">
+  <div class="videos_row">
     <% for(let i=0; i < nyleg.length; i++) { %>
-
+      
       <% let vid=videos[nyleg[i]-1] %>
-        <div class="videos__col">
+        <div class="videos_col">
           <a class="video" href="/<%-vid.id %>">
             <div class="video">
-              <div class="video__image">
-                <img class="video__img" src=<%=vid.poster %> alt="">
-                <div class="video__duration"><b>
+              <div class="video_image">
+                <img class="video_img" src=<%=vid.poster %> alt="">
+                <div class="video_duration"><b>
                     <%= secondsToHms(vid.duration)%>
                   </b></div>
               </div>
-              <div class="video__content">
-                <h3 class="video__title">
+              <div class="video_content">
+                <h3 class="video_title">
                   <%= vid.title%>
                 </h3>
-                <p class="video__age">
-                  <%= getTimeSince(vid.created)%>
+                <p class="video_age">
+                  <%= timeSince(vid.created)%>
                 </p>
               </div>
             </div>
@@ -51,29 +48,29 @@
 
 
         <hr class="line">
-        <h2 class="videos__title">Kennslu Myndbönd</h2>
+        <h2 class="videos_title">Kennslu Myndbönd</h2>
         <% let kennslu=categories[1].videos %>
 
 
-          <div class="videos__row">
+          <div class="videos_row">
             <% for(let i=0; i < kennslu.length; i++) { %>
 
               <% let vid=videos[kennslu[i]-1] %>
-                <div class="videos__col">
+                <div class="videos_col">
                   <a class="video" href="/<%-vid.id %>">
                     <div class="video">
-                      <div class="video__image">
-                        <img class="video__img" src=<%=vid.poster %> alt="">
-                        <div class="video__duration"><b>
+                      <div class="video_image">
+                        <img class="video_img" src=<%=vid.poster %> alt="">
+                        <div class="video_duration"><b>
                             <%= secondsToHms(vid.duration)%>
                           </b></div>
                       </div>
-                      <div class="video__content">
-                        <h3 class="video__title">
+                      <div class="video_content">
+                        <h3 class="video_title">
                           <%= vid.title%>
                         </h3>
-                        <p class="video__age">
-                          <%= getTimeSince(vid.created)%>
+                        <p class="video_age">
+                          <%= timeSince(vid.created)%>
                         </p>
                       </div>
                     </div>
@@ -86,29 +83,29 @@
 
 
           <hr class="line">
-          <h2 class="videos__title">Skemmtimyndbönd</h2>
+          <h2 class="videos_title">Skemmtimyndbönd</h2>
           <% let skemmti=categories[2].videos %>
 
 
-            <div class="videos__row">
+            <div class="videos_row">
               <% for(let i=0; i < skemmti.length; i++) { %>
 
                 <% let vid=videos[skemmti[i]-1] %>
-                  <div class="videos__col">
+                  <div class="videos_col">
                     <a class="video" href="/<%-vid.id %>">
                       <div class="video">
-                        <div class="video__image">
-                          <img class="video__img" src=<%=vid.poster %> alt="">
-                          <div class="video__duration"><b>
+                        <div class="video_image">
+                          <img class="video_img" src=<%=vid.poster %> alt="">
+                          <div class="video_duration"><b>
                               <%= secondsToHms(vid.duration)%>
                             </b></div>
                         </div>
-                        <div class="video__content">
-                          <h3 class="video__title">
+                        <div class="video_content">
+                          <h3 class="video_title">
                             <%= vid.title%>
                           </h3>
-                          <p class="video__age">
-                            <%= getTimeSince(vid.created)%>
+                          <p class="video_age">
+                            <%= timeSince(vid.created)%>
                           </p>
                         </div>
                       </div>
